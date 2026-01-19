@@ -1,0 +1,58 @@
+Day 54:
+==========
+
+Reading Data from Database (Cursor Methods)
+===================================================
+To read data from a database into the application console, Python provides different cursor fetch methods.
+
+a) cursor.fetchall()
+==========================
+Fetches all remaining rows of the query result at once.
+
+Example:
+cur.execute("SELECT * FROM staff")
+rows = cur.fetchall()
+
+for row in rows:
+    print(row)
+
+Key Points:
+Returns list of tuples
+Loads entire result into memory
+Suitable for small datasets
+
+
+b) cursor.fetchmany()
+==========================
+Fetches a specified number of rows.
+
+Example:
+cur.execute("SELECT * FROM staff")
+rows = cur.fetchmany(2)
+
+for row in rows:
+    print(row)
+
+Key Points:
+Controls number of records
+Memory efficient
+Used for medium datasets
+
+
+c) cursor.fetchone()
+==========================
+Fetches one row at a time.
+
+Example:
+
+cur.execute("SELECT * FROM staff")
+row = cur.fetchone()
+
+while row:
+    print(row)
+    row = cur.fetchone()
+
+Key Points:
+Returns a single tuple
+Best for large datasets
+Efficient and safe
